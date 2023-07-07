@@ -21,7 +21,7 @@
         <div class="songItemContainer">
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -29,7 +29,7 @@
           </div>
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -37,7 +37,7 @@
           </div>
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -45,7 +45,7 @@
           </div>
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -53,7 +53,7 @@
           </div>
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -61,7 +61,7 @@
           </div>
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -69,7 +69,7 @@
           </div>
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -77,7 +77,23 @@
           </div>
           <div class="songItem">
             <img src="covers/1.jpg" alt="1" />
-            <span>let me love you</span>
+            <span class="songName">let me love you</span>
+            <span class="songlistplay"
+              ><span class="timeStamp"
+                >05:34<i class="fa-regular fa-circle-play"></i></span
+            ></span>
+          </div>
+          <div class="songItem">
+            <img src="covers/1.jpg" alt="1" />
+            <span class="songName">let me love you</span>
+            <span class="songlistplay"
+              ><span class="timeStamp"
+                >05:34<i class="fa-regular fa-circle-play"></i></span
+            ></span>
+          </div>
+          <div class="songItem">
+            <img src="covers/10.jpg" alt="1" />
+            <span class="songName">let me love you</span>
             <span class="songlistplay"
               ><span class="timeStamp"
                 >05:34<i class="fa-regular fa-circle-play"></i></span
@@ -88,14 +104,14 @@
       <div class="songbanner"></div>
     </div>
     <div class="bottom">
-      <input type="range" name="range" id="myProgressBar" min="0" max="100" />
+      <input type="range" name="range" id="myProgressBar" min="0"  value="0"  max="100" />
       <div class="icons">
         <!-- fontawesome Icons -->
         <i class="fas fa-3x fa-step-backward" id="previous"></i>
-        <i class="fa-regular fa-3x fa-circle-play"></i>
-        <i class="fas fa-3x fa-forward-step"></i>
+        <i class="fa-regular fa-3x fa-circle-play" id="masterPlay"></i>
+        <i class="fas fa-3x fa-forward-step" id="next"></i>
         <div class="songInfo">
-          <img src="playing.gif" width="42px" alt="" >Let me love you - Justin Bieber
+          <img src="playing.gif" width="42px" alt="" id="gif" >Let me love you - Justin Bieber
         </div>
       </div>
     </div>
