@@ -5,6 +5,7 @@ let audioElement = new Audio("songs/1.mp3");
 let masterPlay = document.getElementById("masterPlay");
 let myProgressBar = document.getElementById("myProgressBar");
 let gif = document.getElementById("gif");
+let masterSongName = document.getElementById("masterSongName");
 let songItems = Array.from(document.getElementsByClassName("songItem"));
 let songs = [
   {
@@ -90,3 +91,63 @@ songItems.forEach((element, i) => {
   element.getElementsByTagName("img")[0].src = songs[i].coverPath;
   element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
 });
+// make all plays function make other songs pause button play if they are playing
+const makeAllPlays = () => {
+  Array.from(document.getElementsByClassName("songItemPlay")).forEach(
+    (element) => {
+      element.classList.add("fa-play-circle");
+      element.classList.remove("fa-pause-circle");
+    }
+  );
+};
+Array.from(document.getElementsByClassName("songItemPlay")).forEach(
+  (element) => {
+    element.addEventListener("click", (e) => {
+      makeAllPlays();
+      songIndexindex = parseInt(e.target.id);
+      e.target.classList.remove("fa-play-circle");
+      e.target.classList.add("fa-pause-circle");
+      masterSongName.innerText=songs[songIndex].songName;
+      audioElement.src = `songs/${songIndex+1}.mp3`;
+      audioElement.currentTime = 0; // beacause the songs is changed
+      audioElement.play();
+      gif.style.opacity=1;
+      makeAllPlays.classList.add("fa-pause-circle");
+      makeAllPlays.classList.remove("fa-play-circle");
+    });
+  }
+);
+document.getElementById('next').addEventListener('click',()=>{
+  if(songIndex>=9)
+  {
+    songIndex=0;
+  }
+  else{
+    songIndex+=1;
+  }
+  masterSongName.innerText=songs[songIndex].songName;
+  audioElement.src = `songs/${songIndex+1}.mp3`;
+  audioElement.currentTime = 0; // beacause the songs is changed
+  audioElement.play();
+  gif.style.opacity=1;
+  makeAllPlays.classList.add("fa-pause-circle");
+  makeAllPlays.classList.remove("fa-play-circle");
+  
+})
+document.getElementById('previous').addEventListener('click',()=>{
+  if(songIndex<=0)
+  {
+    songIndex=0;
+  }
+  else{
+    songIndex-=1;
+  }
+  masterSongName.innerText=songs[songIndex].songName;
+  audioElement.src = `songs/${songIndex+1}.mp3`;
+  audioElement.currentTime = 0; // beacause the songs is changed
+  audioElement.play();
+  gif.style.opacity=1;
+  makeAllPlays.classList.add("fa-pause-circle");
+  makeAllPlays.classList.remove("fa-play-circle");
+  
+})
