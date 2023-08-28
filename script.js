@@ -19,7 +19,7 @@ let songs = [
     coverPath: "covers/2.jpg",
   },
   {
-    songName: "DEAF KEV - Invincible [NCS Release]-320k",
+    songName: "DEAF KEV - Invincible [NCS Release]",
     filePath: "songs/3.mp3",
     coverPath: "covers/3.jpg",
   },
@@ -34,27 +34,27 @@ let songs = [
     coverPath: "covers/5.jpg",
   },
   {
-    songName: "Rabba - Salam-e-Ishq",
+    songName: "Aunty Ji - Ek Main Aur Ekk Tu ",
     filePath: "songs/6.mp3",
     coverPath: "covers/6.jpg",
   },
   {
-    songName: "Sakhiyaan - Salam-e-Ishq",
+    songName: "Suit Suit - Guru Randhawa",
     filePath: "songs/7.mp3",
     coverPath: "covers/7.jpg",
   },
   {
-    songName: "Bhula Dena - Salam-e-Ishq",
+    songName: "Happy- Pharrell Williams ",
     filePath: "songs/8.mp3",
     coverPath: "covers/8.jpg",
   },
   {
-    songName: "Tumhari Kasam - Salam-e-Ishq",
-    filePath: "songs/2=9.mp3",
+    songName: "Aadat Se Majboor - Ladies Vs Ricky Bahl",
+    filePath: "songs/9.mp3",
     coverPath: "covers/9.jpg",
   },
   {
-    songName: "Na Jaana - Salam-e-Ishq",
+    songName: "Amplifier - Imran Khan ",
     filePath: "songs/10.mp3",
     coverPath: "covers/10.jpg",
   },
@@ -107,47 +107,85 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach(
       songIndexindex = parseInt(e.target.id);
       e.target.classList.remove("fa-play-circle");
       e.target.classList.add("fa-pause-circle");
-      masterSongName.innerText=songs[songIndex].songName;
-      audioElement.src = `songs/${songIndex+1}.mp3`;
+      masterSongName.innerText = songs[songIndex].songName;
+      audioElement.src = songs[songIndex].filePath;
       audioElement.currentTime = 0; // beacause the songs is changed
       audioElement.play();
-      gif.style.opacity=1;
-      makeAllPlays.classList.add("fa-pause-circle");
-      makeAllPlays.classList.remove("fa-play-circle");
+      gif.style.opacity = 1;
+      masterPlay.classList.add("fa-pause-circle");
+      masterPlay.classList.remove("fa-play-circle");
     });
   }
 );
-document.getElementById('next').addEventListener('click',()=>{
-  if(songIndex>=9)
-  {
-    songIndex=0;
+document.getElementById("next").addEventListener("click", () => {
+  if (songIndex >= 9) {
+    songIndex = 0;
+  } else {
+    songIndex += 1;
   }
-  else{
-    songIndex+=1;
-  }
-  masterSongName.innerText=songs[songIndex].songName;
-  audioElement.src = `songs/${songIndex+1}.mp3`;
+  masterSongName.innerText = songs[songIndex].songName;
+  audioElement.src = `songs/${songIndex + 1}.mp3`;
   audioElement.currentTime = 0; // beacause the songs is changed
   audioElement.play();
-  gif.style.opacity=1;
-  makeAllPlays.classList.add("fa-pause-circle");
-  makeAllPlays.classList.remove("fa-play-circle");
-  
-})
-document.getElementById('previous').addEventListener('click',()=>{
-  if(songIndex<=0)
-  {
-    songIndex=0;
+  gif.style.opacity = 1;
+  masterPlay.classList.add("fa-pause-circle");
+  masterPlay.classList.remove("fa-play-circle");
+});
+document.getElementById("previous").addEventListener("click", () => {
+  if (songIndex <= 0) {
+    songIndex = 0;
+  } else {
+    songIndex -= 1;
   }
-  else{
-    songIndex-=1;
-  }
-  masterSongName.innerText=songs[songIndex].songName;
-  audioElement.src = `songs/${songIndex+1}.mp3`;
+  masterSongName.innerText = songs[songIndex].songName;
+  audioElement.src = `songs/${songIndex + 1}.mp3`;
   audioElement.currentTime = 0; // beacause the songs is changed
   audioElement.play();
-  gif.style.opacity=1;
-  makeAllPlays.classList.add("fa-pause-circle");
-  makeAllPlays.classList.remove("fa-play-circle");
-  
-})
+  gif.style.opacity = 1;
+  masterPlay.classList.add("fa-pause-circle");
+  masterPlay.classList.remove("fa-play-circle");
+});
+// Select all play icons with class 'songItemPlay'
+// Select all play icons with class 'songItemPlay'
+const playIcons = document.querySelectorAll('.songItemPlay');
+
+// Add click event listeners to each play icon
+playIcons.forEach((playIcon, index) => {
+  playIcon.addEventListener('click', () => {
+    // Pause the currently playing song
+    audioElement.pause();
+
+    // Set the new song index based on the clicked play icon's ID
+    songIndex = index;
+
+    // Update the song name displayed
+    masterSongName.innerText = songs[songIndex].songName;
+
+    // Update the audio source to the selected song
+    audioElement.src = songs[songIndex].filePath;
+
+    // Reset the playback time
+    audioElement.currentTime = 0;
+
+    // Play the selected song
+    audioElement.play();
+
+    // Reset all play icons to play state
+    playIcons.forEach((icon) => {
+      icon.classList.remove('fa-circle-pause');
+      icon.classList.add('fa-circle-play');
+    });
+
+    // Change the clicked play icon's appearance to pause
+    playIcon.classList.remove('fa-circle-play');
+    playIcon.classList.add('fa-circle-pause');
+
+    // Display the GIF associated with the song
+    gif.style.opacity = 1;
+
+    // Update the main play button's appearance to show pause
+    masterPlay.classList.add('fa-pause-circle');
+    masterPlay.classList.remove('fa-play-circle');
+  });
+});
+
